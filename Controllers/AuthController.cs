@@ -153,18 +153,18 @@ namespace EVChargingBookingAPI.Controllers
         }
 
         /// <summary>
-        /// Create initial Backoffice user (should be called only once during setup)
+        /// Create Backoffice user (for registration)
         /// </summary>
         [HttpPost("create-backoffice")]
         public async Task<ActionResult<User>> CreateBackofficeUser(BackofficeCreationRequest request)
         {
             try
             {
-                // Check if any Backoffice users already exist
-                var existingBackoffice = await _userService.GetUsersByRoleAsync("Backoffice");
-                if (existingBackoffice.Any())
+                // Check if username already exists
+                var existingUser = await _userService.GetUserByUsernameAsync(request.Username);
+                if (existingUser != null)
                 {
-                    return BadRequest("Backoffice users already exist. Use the web interface to create additional users.");
+                    return BadRequest("Username already exists. Please choose a different username.");
                 }
 
                 var newUser = new User
@@ -196,62 +196,7 @@ namespace EVChargingBookingAPI.Controllers
             }
         }
 
-        /// <summary>
-        /// Register new Station Operator (for web app)
-        /// </summary>
-        [HttpPost("register-operator")]
-        public async Task<ActionResult<User>> RegisterStationOperator(StationOperatorRegistration registration)
-        {
-            try
-            {
-                // Validate input
-                if (string.IsNullOrEmpty(registration.Username) || string.IsNullOrEmpty(registration.Password))
-                {
-                    return BadRequest("Username and password are required");
-                }
 
-                if (registration.Password.Length < 6)
-                {
-                    return BadRequest("Password must be at least 6 characters long");
-                }
-
-                // Check if username already exists
-                var existingUser = await _userService.GetUserByUsernameAsync(registration.Username);
-                if (existingUser != null)
-                {
-                    return BadRequest("Username already exists");
-                }
-
-                // Create new Station Operator user
-                var newUser = new User
-                {
-                    Username = registration.Username,
-                    Email = registration.Email,
-                    Role = "StationOperator",
-                    IsActive = true,
-                    CreatedAt = DateTime.UtcNow
-                };
-
-                var createdUser = await _userService.CreateUserAsync(newUser, registration.Password);
-                
-                // Return user info without password hash
-                var userResponse = new User
-                {
-                    Id = createdUser.Id,
-                    Username = createdUser.Username,
-                    Email = createdUser.Email,
-                    Role = createdUser.Role,
-                    IsActive = createdUser.IsActive,
-                    CreatedAt = createdUser.CreatedAt
-                };
-
-                return CreatedAtAction(nameof(RegisterStationOperator), new { id = createdUser.Id }, userResponse);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
-        }
 
         private string HashPassword(string password)
         {
