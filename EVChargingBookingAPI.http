@@ -1,0 +1,6 @@
+@EVChargingBookingAPI_HostAddress = http://localhost:5078
+
+GET {{EVChargingBookingAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "O/OopqcB1t2SbDdzNNiw7+qObBZxIQp5Q6aHvSqu3EY=",
+  "Source": "EVChargingBookingAPI",
+  "BasePath": "_content/EVChargingBookingAPI",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

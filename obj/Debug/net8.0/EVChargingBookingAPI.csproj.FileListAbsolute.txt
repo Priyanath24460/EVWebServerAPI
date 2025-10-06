@@ -1,0 +1,165 @@
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\appsettings.Development.json
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\appsettings.json
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\EVChargingBookingAPI.exe
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\EVChargingBookingAPI.deps.json
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\EVChargingBookingAPI.runtimeconfig.json
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\EVChargingBookingAPI.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\EVChargingBookingAPI.pdb
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\AWSSDK.Core.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\AWSSDK.SecurityToken.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\DnsClient.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\Microsoft.OpenApi.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\MongoDB.Bson.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\MongoDB.Driver.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\MongoDB.Driver.Core.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\MongoDB.Libmongocrypt.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\SharpCompress.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\Snappier.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\ZstdSharp.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\runtimes\linux\native\libmongocrypt.so
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\runtimes\osx\native\libmongocrypt.dylib
+D:\gitgub\EADproject\EVChargingBookingAPI\bin\Debug\net8.0\runtimes\win\native\mongocrypt.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\EVChargingBookingAPI.csproj.AssemblyReference.cache
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\EVChargingBookingAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\EVChargingBookingAPI.AssemblyInfoInputs.cache
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\EVChargingBookingAPI.AssemblyInfo.cs
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\EVChargingBookingAPI.csproj.CoreCompileInputs.cache
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\EVChargingBookingAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\EVChargingBookingAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\staticwebassets.build.json
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\staticwebassets.development.json
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\staticwebassets\msbuild.EVChargingBookingAPI.Microsoft.AspNetCore.StaticWebAssets.props
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\staticwebassets\msbuild.build.EVChargingBookingAPI.props
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.EVChargingBookingAPI.props
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.EVChargingBookingAPI.props
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\staticwebassets.pack.json
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\scopedcss\bundle\EVChargingBookingAPI.styles.css
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\EVChargi.5348D1B1.Up2Date
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\EVChargingBookingAPI.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\refint\EVChargingBookingAPI.dll
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\EVChargingBookingAPI.pdb
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\EVChargingBookingAPI.genruntimeconfig.cache
+D:\gitgub\EADproject\EVChargingBookingAPI\obj\Debug\net8.0\ref\EVChargingBookingAPI.dll
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\appsettings.Development.json
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\appsettings.json
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\publish\publish\web.config
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\publish\web.config
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\publish\appsettings.Development.json
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\publish\appsettings.json
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\publish\EVChargingBookingAPI.deps.json
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\publish\EVChargingBookingAPI.runtimeconfig.json
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\publish\publish\appsettings.Development.json
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\publish\publish\appsettings.json
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\publish\publish\EVChargingBookingAPI.deps.json
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\publish\publish\EVChargingBookingAPI.runtimeconfig.json
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\EVChargingBookingAPI.exe
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\EVChargingBookingAPI.deps.json
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\EVChargingBookingAPI.runtimeconfig.json
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\EVChargingBookingAPI.dll
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\EVChargingBookingAPI.pdb
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\AWSSDK.Core.dll
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\AWSSDK.SecurityToken.dll
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\DnsClient.dll
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\Microsoft.OpenApi.dll
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\MongoDB.Bson.dll
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\MongoDB.Driver.dll
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\MongoDB.Driver.Core.dll
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\MongoDB.Libmongocrypt.dll
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\SharpCompress.dll
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\Snappier.dll
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\ZstdSharp.dll
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\runtimes\linux\native\libmongocrypt.so
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\runtimes\osx\native\libmongocrypt.dylib
+D:\gitgub\WebServerAPI\bin\Debug\net8.0\runtimes\win\native\mongocrypt.dll
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.csproj.AssemblyReference.cache
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.AssemblyInfoInputs.cache
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.AssemblyInfo.cs
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.csproj.CoreCompileInputs.cache
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.sourcelink.json
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\staticwebassets.build.json
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\staticwebassets.development.json
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\staticwebassets\msbuild.EVChargingBookingAPI.Microsoft.AspNetCore.StaticWebAssets.props
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\staticwebassets\msbuild.build.EVChargingBookingAPI.props
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.EVChargingBookingAPI.props
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.EVChargingBookingAPI.props
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\staticwebassets.pack.json
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\scopedcss\bundle\EVChargingBookingAPI.styles.css
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\EVChargi.5348D1B1.Up2Date
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.dll
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\refint\EVChargingBookingAPI.dll
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.pdb
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.genruntimeconfig.cache
+D:\gitgub\WebServerAPI\obj\Debug\net8.0\ref\EVChargingBookingAPI.dll
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\publish\publish\web.config
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\publish\web.config
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\appsettings.Development.json
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\appsettings.json
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\publish\appsettings.Development.json
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\publish\appsettings.json
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\publish\EVChargingBookingAPI.deps.json
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\publish\EVChargingBookingAPI.runtimeconfig.json
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\publish\publish\appsettings.Development.json
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\publish\publish\appsettings.json
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\publish\publish\EVChargingBookingAPI.deps.json
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\publish\publish\EVChargingBookingAPI.runtimeconfig.json
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\EVChargingBookingAPI.exe
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\EVChargingBookingAPI.deps.json
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\EVChargingBookingAPI.runtimeconfig.json
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\EVChargingBookingAPI.dll
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\EVChargingBookingAPI.pdb
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\AWSSDK.Core.dll
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\AWSSDK.SecurityToken.dll
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\DnsClient.dll
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\Microsoft.OpenApi.dll
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\MongoDB.Bson.dll
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\MongoDB.Driver.dll
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\MongoDB.Driver.Core.dll
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\MongoDB.Libmongocrypt.dll
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\SharpCompress.dll
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\Snappier.dll
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\ZstdSharp.dll
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\runtimes\linux\native\libmongocrypt.so
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\runtimes\osx\native\libmongocrypt.dylib
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\runtimes\win\native\mongocrypt.dll
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.csproj.AssemblyReference.cache
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.AssemblyInfoInputs.cache
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.AssemblyInfo.cs
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.csproj.CoreCompileInputs.cache
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.sourcelink.json
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\staticwebassets.build.json
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\staticwebassets.development.json
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\staticwebassets\msbuild.EVChargingBookingAPI.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\staticwebassets\msbuild.build.EVChargingBookingAPI.props
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.EVChargingBookingAPI.props
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.EVChargingBookingAPI.props
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\staticwebassets.pack.json
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\scopedcss\bundle\EVChargingBookingAPI.styles.css
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\EVChargi.5348D1B1.Up2Date
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.dll
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\refint\EVChargingBookingAPI.dll
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.pdb
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\EVChargingBookingAPI.genruntimeconfig.cache
+D:\Web and mobile connect\WebServerAPI\obj\Debug\net8.0\ref\EVChargingBookingAPI.dll
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\publish\publish\publish\web.config
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\publish\publish\publish\appsettings.Development.json
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\publish\publish\publish\appsettings.json
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\publish\publish\publish\EVChargingBookingAPI.deps.json
+D:\Web and mobile connect\WebServerAPI\bin\Debug\net8.0\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json
