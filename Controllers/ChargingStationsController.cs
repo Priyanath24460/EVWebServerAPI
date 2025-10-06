@@ -3,6 +3,7 @@ using EVChargingBookingAPI.Models;
 using EVChargingBookingAPI.Services;
 using EVChargingBookingAPI.DTOs;
 using EVChargingBookingAPI.Middleware;
+using System.Linq;
 
 namespace EVChargingBookingAPI.Controllers
 {
@@ -144,21 +145,28 @@ namespace EVChargingBookingAPI.Controllers
         }
 
         /// <summary>
-        /// Create a new charging station with assigned operator (Backoffice only)
+        /// Create a new charging station with auto-generated operator (Backoffice only)
         /// </summary>
         [HttpPost("with-operator")]
         [RequireRole("Backoffice")]
-        public async Task<ActionResult<ChargingStation>> CreateWithOperator(CreateStationDTO createStationDto)
+        public async Task<ActionResult<CreateStationResponseDTO>> CreateWithOperator(CreateStationDTO createStationDto)
         {
             try
             {
                 var userId = HttpContext.Items["UserId"]?.ToString();
                 
-                // Create the Station Operator first
+                // Generate unique username and password
+                var stationCode = createStationDto.Name.Replace(" ", "").ToLower();
+                var uniqueId = Guid.NewGuid().ToString().Substring(0, 6);
+                var generatedUsername = $"{stationCode}_op_{uniqueId}";
+                var generatedPassword = GenerateSecurePassword();
+                var generatedEmail = $"{generatedUsername}@evcharging.system";
+
+                // Create the Station Operator with generated credentials
                 var newOperator = await _userService.CreateStationOperatorAsync(
-                    createStationDto.OperatorUsername,
-                    createStationDto.OperatorPassword,
-                    createStationDto.OperatorEmail
+                    generatedUsername,
+                    generatedPassword,
+                    generatedEmail
                 );
 
                 // Create the charging station
@@ -176,7 +184,16 @@ namespace EVChargingBookingAPI.Controllers
                 };
 
                 var createdStation = await _chargingStationService.CreateStationAsync(station);
-                return CreatedAtAction(nameof(GetById), new { id = createdStation.Id }, createdStation);
+                
+                // Return station with generated credentials
+                var response = new CreateStationResponseDTO
+                {
+                    Station = createdStation,
+                    GeneratedUsername = generatedUsername,
+                    GeneratedPassword = generatedPassword
+                };
+
+                return CreatedAtAction(nameof(GetById), new { id = createdStation.Id }, response);
             }
             catch (InvalidOperationException ex)
             {
@@ -190,6 +207,14 @@ namespace EVChargingBookingAPI.Controllers
             {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
+        }
+
+        private string GenerateSecurePassword()
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%";
+            var random = new Random();
+            return new string(Enumerable.Repeat(chars, 12)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
         /// <summary>

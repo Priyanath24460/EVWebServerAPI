@@ -3,7 +3,7 @@ using EVChargingBookingAPI.Models;
 namespace EVChargingBookingAPI.DTOs
 {
     /// <summary>
-    /// DTO for creating a new charging station with operator assignment
+    /// DTO for creating a new charging station with auto-generated operator
     /// </summary>
     public class CreateStationDTO
     {
@@ -11,11 +11,16 @@ namespace EVChargingBookingAPI.DTOs
         public Location Location { get; set; } = new Location();
         public string StationType { get; set; } = string.Empty; // "AC" or "DC"
         public int TotalSlots { get; set; }
-        
-        // Operator assignment information
-        public string OperatorUsername { get; set; } = string.Empty;
-        public string OperatorPassword { get; set; } = string.Empty;
-        public string OperatorEmail { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// Response DTO for station creation with generated operator credentials
+    /// </summary>
+    public class CreateStationResponseDTO
+    {
+        public ChargingStation Station { get; set; } = new ChargingStation();
+        public string GeneratedUsername { get; set; } = string.Empty;
+        public string GeneratedPassword { get; set; } = string.Empty;
     }
 
     /// <summary>
