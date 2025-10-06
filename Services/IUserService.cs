@@ -16,6 +16,12 @@ namespace EVChargingBookingAPI.Services
         Task<bool> AuthenticateUserAsync(string username, string password);
         Task<bool> ChangePasswordAsync(string userId, string currentPassword, string newPassword);
         
+        // Role-based methods
+        Task<List<User>> GetUsersByRoleAsync(string role);
+        Task<User> CreateStationOperatorAsync(string username, string password, string email);
+        Task<bool> DeactivateUserAsync(string userId);
+        Task<bool> ActivateUserAsync(string userId);
+        
         // EV Owner methods
         Task<EVOwner> GetEVOwnerByNICAsync(string nic);
         Task<EVOwner> CreateEVOwnerAsync(EVOwner evOwner);

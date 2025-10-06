@@ -14,5 +14,6 @@ namespace EVChargingBookingAPI.Repositories
         Task UpdateAsync(string id, User user);
         Task DeleteAsync(string id);
         Task<bool> UsernameExistsAsync(string username);
+        Task<List<User>> GetByRoleAsync(string role);
     }
 }

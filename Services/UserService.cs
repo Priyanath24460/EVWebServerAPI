@@ -121,6 +121,58 @@ namespace EVChargingBookingAPI.Services
             return evOwner;
         }
 
+        public async Task<List<User>> GetUsersByRoleAsync(string role)
+        {
+            return await _userRepository.GetByRoleAsync(role);
+        }
+
+        public async Task<User> CreateStationOperatorAsync(string username, string password, string email)
+        {
+            // Check if username already exists
+            if (await _userRepository.UsernameExistsAsync(username))
+            {
+                throw new InvalidOperationException("Username already exists");
+            }
+
+            var user = new User
+            {
+                Username = username,
+                Email = email,
+                Role = "StationOperator",
+                PasswordHash = HashPassword(password),
+                IsActive = true,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            return await _userRepository.CreateAsync(user);
+        }
+
+        public async Task<bool> DeactivateUserAsync(string userId)
+        {
+            var user = await _userRepository.GetByIdAsync(userId);
+            if (user == null)
+            {
+                return false;
+            }
+
+            user.IsActive = false;
+            await _userRepository.UpdateAsync(userId, user);
+            return true;
+        }
+
+        public async Task<bool> ActivateUserAsync(string userId)
+        {
+            var user = await _userRepository.GetByIdAsync(userId);
+            if (user == null)
+            {
+                return false;
+            }
+
+            user.IsActive = true;
+            await _userRepository.UpdateAsync(userId, user);
+            return true;
+        }
+
         private string HashPassword(string password)
         {
             using var sha256 = SHA256.Create();

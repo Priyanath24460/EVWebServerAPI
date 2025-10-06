@@ -27,11 +27,20 @@ namespace EVChargingBookingAPI.Models
         [BsonElement("availableSlots")]
         public List<TimeSlot> AvailableSlots { get; set; } = new List<TimeSlot>();
 
+        [BsonElement("assignedOperatorId")]
+        public string? AssignedOperatorId { get; set; } // ID of the Station Operator assigned to manage this station
+
+        [BsonElement("assignedOperatorUsername")]
+        public string? AssignedOperatorUsername { get; set; } // Username of the assigned operator for easy reference
+
         [BsonElement("isActive")]
         public bool IsActive { get; set; } = true;
 
         [BsonElement("createdAt")]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        [BsonElement("createdByUserId")]
+        public string? CreatedByUserId { get; set; } // ID of the Backoffice user who created this station
     }
 
     public class Location

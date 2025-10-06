@@ -16,5 +16,6 @@ namespace EVChargingBookingAPI.Repositories
         Task<bool> DeactivateAsync(string id);
         Task<bool> DeleteAsync(string id);
         Task<List<ChargingStation>> GetNearbyStationsAsync(double latitude, double longitude, double radiusKm);
+        Task<List<ChargingStation>> GetByOperatorIdAsync(string operatorId);
     }
 }

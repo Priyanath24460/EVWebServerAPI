@@ -20,5 +20,11 @@ namespace EVChargingBookingAPI.Services
         Task<bool> RemoveTimeSlotAsync(string stationId, string slotId);
         Task<List<ChargingStation>> GetAllChargingStationsAsync();
         Task<ChargingStation> CreateChargingStationAsync(ChargingStation station);
+        
+        // Role-based operations
+        Task<ChargingStation> CreateStationWithOperatorAsync(ChargingStation station, string operatorUsername, string operatorPassword, string operatorEmail, string createdByUserId);
+        Task<List<ChargingStation>> GetStationsByOperatorIdAsync(string operatorId);
+        Task<bool> UpdateStationByOperatorAsync(string stationId, string operatorId, List<TimeSlot> availableSlots);
+        Task<bool> AssignOperatorToStationAsync(string stationId, string operatorId);
     }
 }

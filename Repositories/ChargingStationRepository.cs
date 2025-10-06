@@ -116,5 +116,12 @@ namespace EVChargingBookingAPI.Repositories
         {
             return Math.PI * angle / 180.0;
         }
+
+        public async Task<List<ChargingStation>> GetByOperatorIdAsync(string operatorId)
+        {
+            return await _context.ChargingStations
+                .Find(cs => cs.AssignedOperatorId == operatorId && cs.IsActive)
+                .ToListAsync();
+        }
     }
 }

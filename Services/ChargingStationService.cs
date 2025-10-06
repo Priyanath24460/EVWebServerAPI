@@ -173,5 +173,46 @@ namespace EVChargingBookingAPI.Services
         {
             return await CreateStationAsync(station);
         }
+
+        public async Task<ChargingStation> CreateStationWithOperatorAsync(ChargingStation station, string operatorUsername, string operatorPassword, string operatorEmail, string createdByUserId)
+        {
+            // This method should be called from the controller which has access to UserService
+            // For now, we'll just create the station with the assigned operator info
+            station.CreatedByUserId = createdByUserId;
+            station.CreatedAt = DateTime.UtcNow;
+            
+            return await _chargingStationRepository.CreateAsync(station);
+        }
+
+        public async Task<List<ChargingStation>> GetStationsByOperatorIdAsync(string operatorId)
+        {
+            return await _chargingStationRepository.GetByOperatorIdAsync(operatorId);
+        }
+
+        public async Task<bool> UpdateStationByOperatorAsync(string stationId, string operatorId, List<TimeSlot> availableSlots)
+        {
+            var station = await _chargingStationRepository.GetByIdAsync(stationId);
+            if (station == null || station.AssignedOperatorId != operatorId)
+            {
+                return false; // Station not found or not assigned to this operator
+            }
+
+            station.AvailableSlots = availableSlots;
+            await _chargingStationRepository.UpdateAsync(stationId, station);
+            return true;
+        }
+
+        public async Task<bool> AssignOperatorToStationAsync(string stationId, string operatorId)
+        {
+            var station = await _chargingStationRepository.GetByIdAsync(stationId);
+            if (station == null)
+            {
+                return false;
+            }
+
+            station.AssignedOperatorId = operatorId;
+            await _chargingStationRepository.UpdateAsync(stationId, station);
+            return true;
+        }
     }
 }

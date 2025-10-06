@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Web and mobile connect\\WebServerAPI\\EVChargingBookingAPI.csproj": {}
+    "D:\\Web and mobile connect\\EVWebServerApI\\EVChargingBookingAPI.csproj": {}
   },
   "projects": {
-    "D:\\Web and mobile connect\\WebServerAPI\\EVChargingBookingAPI.csproj": {
+    "D:\\Web and mobile connect\\EVWebServerApI\\EVChargingBookingAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Web and mobile connect\\WebServerAPI\\EVChargingBookingAPI.csproj",
+        "projectUniqueName": "D:\\Web and mobile connect\\EVWebServerApI\\EVChargingBookingAPI.csproj",
         "projectName": "EVChargingBookingAPI",
-        "projectPath": "D:\\Web and mobile connect\\WebServerAPI\\EVChargingBookingAPI.csproj",
+        "projectPath": "D:\\Web and mobile connect\\EVWebServerApI\\EVChargingBookingAPI.csproj",
         "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "D:\\Web and mobile connect\\WebServerAPI\\obj\\",
+        "outputPath": "D:\\Web and mobile connect\\EVWebServerApI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config"

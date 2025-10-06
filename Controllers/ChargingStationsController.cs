@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using EVChargingBookingAPI.Models;
 using EVChargingBookingAPI.Services;
+using EVChargingBookingAPI.DTOs;
+using EVChargingBookingAPI.Middleware;
 
 namespace EVChargingBookingAPI.Controllers
 {
@@ -12,10 +14,12 @@ namespace EVChargingBookingAPI.Controllers
     public class ChargingStationsController : ControllerBase
     {
         private readonly IChargingStationService _chargingStationService;
+        private readonly IUserService _userService;
 
-        public ChargingStationsController(IChargingStationService chargingStationService)
+        public ChargingStationsController(IChargingStationService chargingStationService, IUserService userService)
         {
             _chargingStationService = chargingStationService;
+            _userService = userService;
         }
 
         /// <summary>
@@ -116,13 +120,16 @@ namespace EVChargingBookingAPI.Controllers
         }
 
         /// <summary>
-        /// Create a new charging station
+        /// Create a new charging station (Backoffice only)
         /// </summary>
         [HttpPost]
+        [RequireRole("Backoffice")]
         public async Task<ActionResult<ChargingStation>> Create(ChargingStation station)
         {
             try
             {
+                var userId = HttpContext.Items["UserId"]?.ToString();
+                station.CreatedByUserId = userId;
                 var createdStation = await _chargingStationService.CreateStationAsync(station);
                 return CreatedAtAction(nameof(GetById), new { id = createdStation.Id }, createdStation);
             }
@@ -137,9 +144,59 @@ namespace EVChargingBookingAPI.Controllers
         }
 
         /// <summary>
-        /// Update an existing charging station
+        /// Create a new charging station with assigned operator (Backoffice only)
+        /// </summary>
+        [HttpPost("with-operator")]
+        [RequireRole("Backoffice")]
+        public async Task<ActionResult<ChargingStation>> CreateWithOperator(CreateStationDTO createStationDto)
+        {
+            try
+            {
+                var userId = HttpContext.Items["UserId"]?.ToString();
+                
+                // Create the Station Operator first
+                var newOperator = await _userService.CreateStationOperatorAsync(
+                    createStationDto.OperatorUsername,
+                    createStationDto.OperatorPassword,
+                    createStationDto.OperatorEmail
+                );
+
+                // Create the charging station
+                var station = new ChargingStation
+                {
+                    Name = createStationDto.Name,
+                    Location = createStationDto.Location,
+                    StationType = createStationDto.StationType,
+                    TotalSlots = createStationDto.TotalSlots,
+                    AssignedOperatorId = newOperator.Id,
+                    AssignedOperatorUsername = newOperator.Username,
+                    CreatedByUserId = userId,
+                    IsActive = true,
+                    CreatedAt = DateTime.UtcNow
+                };
+
+                var createdStation = await _chargingStationService.CreateStationAsync(station);
+                return CreatedAtAction(nameof(GetById), new { id = createdStation.Id }, createdStation);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Update an existing charging station (Backoffice only)
         /// </summary>
         [HttpPut("{id}")]
+        [RequireRole("Backoffice")]
         public async Task<ActionResult<ChargingStation>> Update(string id, ChargingStation station)
         {
             try
@@ -167,9 +224,10 @@ namespace EVChargingBookingAPI.Controllers
         }
 
         /// <summary>
-        /// Deactivate a charging station
+        /// Deactivate a charging station (Backoffice only)
         /// </summary>
         [HttpPatch("{id}/deactivate")]
+        [RequireRole("Backoffice")]
         public async Task<ActionResult> Deactivate(string id)
         {
             try
@@ -188,9 +246,10 @@ namespace EVChargingBookingAPI.Controllers
         }
 
         /// <summary>
-        /// Delete a charging station
+        /// Delete a charging station (Backoffice only)
         /// </summary>
         [HttpDelete("{id}")]
+        [RequireRole("Backoffice")]
         public async Task<ActionResult> Delete(string id)
         {
             try
@@ -255,6 +314,166 @@ namespace EVChargingBookingAPI.Controllers
             catch (ArgumentException ex)
             {
                 return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        // ============ ROLE-BASED ENDPOINTS ============
+
+        /// <summary>
+        /// Get stations assigned to the current Station Operator
+        /// </summary>
+        [HttpGet("my-stations")]
+        [RequireRole("StationOperator")]
+        public async Task<ActionResult<List<ChargingStation>>> GetMyStations()
+        {
+            try
+            {
+                var operatorId = HttpContext.Items["UserId"]?.ToString();
+                if (string.IsNullOrEmpty(operatorId))
+                {
+                    return Unauthorized("Operator ID not found");
+                }
+
+                var stations = await _chargingStationService.GetStationsByOperatorIdAsync(operatorId);
+                return Ok(stations);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Update station details (Station Operator can only update their assigned stations)
+        /// </summary>
+        [HttpPut("{id}/operator-update")]
+        [RequireRole("StationOperator")]
+        public async Task<ActionResult> UpdateByOperator(string id, OperatorStationUpdateDTO updateDto)
+        {
+            try
+            {
+                var operatorId = HttpContext.Items["UserId"]?.ToString();
+                if (string.IsNullOrEmpty(operatorId))
+                {
+                    return Unauthorized("Operator ID not found");
+                }
+
+                // Check if the station belongs to this operator
+                var station = await _chargingStationService.GetStationByIdAsync(id);
+                if (station == null)
+                {
+                    return NotFound("Charging station not found");
+                }
+
+                if (station.AssignedOperatorId != operatorId)
+                {
+                    return Forbid("You can only update stations assigned to you");
+                }
+
+                // Update the station
+                if (updateDto.AvailableSlots != null)
+                {
+                    var result = await _chargingStationService.UpdateStationByOperatorAsync(id, operatorId, updateDto.AvailableSlots);
+                    if (!result)
+                    {
+                        return BadRequest("Failed to update station");
+                    }
+                }
+
+                if (updateDto.IsActive.HasValue)
+                {
+                    station.IsActive = updateDto.IsActive.Value;
+                    await _chargingStationService.UpdateStationAsync(id, station);
+                }
+
+                return Ok("Station updated successfully");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Get all Station Operators (Backoffice only)
+        /// </summary>
+        [HttpGet("operators")]
+        [RequireRole("Backoffice")]
+        public async Task<ActionResult<List<User>>> GetAllOperators()
+        {
+            try
+            {
+                var operators = await _userService.GetUsersByRoleAsync("StationOperator");
+                
+                // Remove password hashes from response
+                var safeOperators = operators.Select(op => new User
+                {
+                    Id = op.Id,
+                    Username = op.Username,
+                    Email = op.Email,
+                    Role = op.Role,
+                    IsActive = op.IsActive,
+                    CreatedAt = op.CreatedAt
+                }).ToList();
+                
+                return Ok(safeOperators);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Assign an existing operator to a station (Backoffice only)
+        /// </summary>
+        [HttpPost("{stationId}/assign-operator/{operatorId}")]
+        [RequireRole("Backoffice")]
+        public async Task<ActionResult> AssignOperatorToStation(string stationId, string operatorId)
+        {
+            try
+            {
+                // Validate that the operator exists and is active
+                var operatorUser = await _userService.GetUserByIdAsync(operatorId);
+                if (operatorUser == null || operatorUser.Role != "StationOperator" || !operatorUser.IsActive)
+                {
+                    return BadRequest("Invalid or inactive operator");
+                }
+
+                var result = await _chargingStationService.AssignOperatorToStationAsync(stationId, operatorId);
+                if (!result)
+                {
+                    return NotFound("Charging station not found");
+                }
+
+                return Ok("Operator assigned to station successfully");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Deactivate a Station Operator (Backoffice only)
+        /// </summary>
+        [HttpPatch("operators/{operatorId}/deactivate")]
+        [RequireRole("Backoffice")]
+        public async Task<ActionResult> DeactivateOperator(string operatorId)
+        {
+            try
+            {
+                var result = await _userService.DeactivateUserAsync(operatorId);
+                if (!result)
+                {
+                    return NotFound("Operator not found");
+                }
+
+                return Ok("Operator deactivated successfully");
             }
             catch (Exception ex)
             {

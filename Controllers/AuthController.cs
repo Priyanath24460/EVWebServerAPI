@@ -153,6 +153,50 @@ namespace EVChargingBookingAPI.Controllers
         }
 
         /// <summary>
+        /// Create initial Backoffice user (should be called only once during setup)
+        /// </summary>
+        [HttpPost("create-backoffice")]
+        public async Task<ActionResult<User>> CreateBackofficeUser(BackofficeCreationRequest request)
+        {
+            try
+            {
+                // Check if any Backoffice users already exist
+                var existingBackoffice = await _userService.GetUsersByRoleAsync("Backoffice");
+                if (existingBackoffice.Any())
+                {
+                    return BadRequest("Backoffice users already exist. Use the web interface to create additional users.");
+                }
+
+                var newUser = new User
+                {
+                    Username = request.Username,
+                    Email = request.Email,
+                    Role = "Backoffice",
+                    IsActive = true,
+                    CreatedAt = DateTime.UtcNow
+                };
+
+                var createdUser = await _userService.CreateUserAsync(newUser, request.Password);
+                
+                var userResponse = new User
+                {
+                    Id = createdUser.Id,
+                    Username = createdUser.Username,
+                    Email = createdUser.Email,
+                    Role = createdUser.Role,
+                    IsActive = createdUser.IsActive,
+                    CreatedAt = createdUser.CreatedAt
+                };
+
+                return Ok(userResponse);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
         /// Register new Station Operator (for web app)
         /// </summary>
         [HttpPost("register-operator")]
@@ -274,5 +318,12 @@ namespace EVChargingBookingAPI.Controllers
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty;
+    }
+
+    public class BackofficeCreationRequest
+    {
+        public string Username { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
     }
 }

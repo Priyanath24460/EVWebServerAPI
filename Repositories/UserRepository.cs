@@ -51,5 +51,10 @@ namespace EVChargingBookingAPI.Repositories
         {
             return await _context.Users.Find(u => u.Username == username).AnyAsync();
         }
+
+        public async Task<List<User>> GetByRoleAsync(string role)
+        {
+            return await _context.Users.Find(u => u.Role == role && u.IsActive).ToListAsync();
+        }
     }
 }
