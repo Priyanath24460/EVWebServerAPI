@@ -178,6 +178,7 @@ namespace EVChargingBookingAPI.Controllers
                     TotalSlots = createStationDto.TotalSlots,
                     AssignedOperatorId = newOperator.Id,
                     AssignedOperatorUsername = newOperator.Username,
+                    AssignedOperatorPassword = generatedPassword,
                     CreatedByUserId = userId,
                     IsActive = true,
                     CreatedAt = DateTime.UtcNow
@@ -241,6 +242,48 @@ namespace EVChargingBookingAPI.Controllers
             catch (InvalidOperationException ex)
             {
                 return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Update operator credentials for a charging station (Backoffice only)
+        /// </summary>
+        [HttpPut("{id}/operator-credentials")]
+        [RequireRole("Backoffice")]
+        public async Task<ActionResult> UpdateOperatorCredentials(string id, [FromBody] UpdateOperatorCredentialsDTO credentialsDto)
+        {
+            try
+            {
+                var station = await _chargingStationService.GetStationByIdAsync(id);
+                if (station == null)
+                {
+                    return NotFound($"Charging station with ID {id} not found");
+                }
+
+                // Update the operator credentials in the User collection
+                if (!string.IsNullOrEmpty(station.AssignedOperatorId))
+                {
+                    await _userService.UpdateOperatorCredentialsAsync(
+                        station.AssignedOperatorId, 
+                        credentialsDto.Username, 
+                        credentialsDto.Password
+                    );
+                }
+
+                // Update the station record
+                station.AssignedOperatorUsername = credentialsDto.Username;
+                station.AssignedOperatorPassword = credentialsDto.Password;
+                
+                var updatedStation = await _chargingStationService.UpdateStationAsync(id, station);
+                return Ok("Operator credentials updated successfully");
+            }
+            catch (ArgumentException ex)
+            {
+                return NotFound(ex.Message);
             }
             catch (Exception ex)
             {

@@ -46,4 +46,13 @@ namespace EVChargingBookingAPI.DTOs
         public List<TimeSlot>? AvailableSlots { get; set; }
         public bool? IsActive { get; set; }
     }
+
+    /// <summary>
+    /// DTO for updating operator credentials
+    /// </summary>
+    public class UpdateOperatorCredentialsDTO
+    {
+        public string Username { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+    }
 }
