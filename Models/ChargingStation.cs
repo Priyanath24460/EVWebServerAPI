@@ -33,6 +33,9 @@ namespace EVChargingBookingAPI.Models
         [BsonElement("assignedOperatorUsername")]
         public string? AssignedOperatorUsername { get; set; } // Username of the assigned operator for easy reference
 
+        [BsonElement("assignedOperatorPassword")]
+        public string? AssignedOperatorPassword { get; set; } // Password of the assigned operator for display purposes
+
         [BsonElement("isActive")]
         public bool IsActive { get; set; } = true;
 

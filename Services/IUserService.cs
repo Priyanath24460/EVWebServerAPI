@@ -25,5 +25,8 @@ namespace EVChargingBookingAPI.Services
         // EV Owner methods
         Task<EVOwner> GetEVOwnerByNICAsync(string nic);
         Task<EVOwner> CreateEVOwnerAsync(EVOwner evOwner);
+        
+        // Operator credential methods
+        Task<bool> UpdateOperatorCredentialsAsync(string operatorId, string newUsername, string newPassword);
     }
 }

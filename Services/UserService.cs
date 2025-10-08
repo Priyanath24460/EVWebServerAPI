@@ -173,6 +173,28 @@ namespace EVChargingBookingAPI.Services
             return true;
         }
 
+        public async Task<bool> UpdateOperatorCredentialsAsync(string operatorId, string newUsername, string newPassword)
+        {
+            var user = await _userRepository.GetByIdAsync(operatorId);
+            if (user == null || user.Role != "StationOperator")
+            {
+                throw new ArgumentException("Station Operator not found");
+            }
+
+            // Check if new username already exists (for different user)
+            var existingUser = await _userRepository.GetByUsernameAsync(newUsername);
+            if (existingUser != null && existingUser.Id != operatorId)
+            {
+                throw new InvalidOperationException("Username already exists");
+            }
+
+            user.Username = newUsername;
+            user.PasswordHash = HashPassword(newPassword);
+            
+            await _userRepository.UpdateAsync(operatorId, user);
+            return true;
+        }
+
         private string HashPassword(string password)
         {
             using var sha256 = SHA256.Create();
