@@ -1068,19 +1068,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Asus\\.nuget\\packages\\": {}
+    "C:\\Users\\testudi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Web and mobile connect\\EVWebServerApI\\EVChargingBookingAPI.csproj",
+      "projectUniqueName": "D:\\SLIIIT\\4th Year\\EAD\\EVWebServerAPI\\EVChargingBookingAPI.csproj",
       "projectName": "EVChargingBookingAPI",
-      "projectPath": "D:\\Web and mobile connect\\EVWebServerApI\\EVChargingBookingAPI.csproj",
-      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "D:\\Web and mobile connect\\EVWebServerApI\\obj\\",
+      "projectPath": "D:\\SLIIIT\\4th Year\\EAD\\EVWebServerAPI\\EVChargingBookingAPI.csproj",
+      "packagesPath": "C:\\Users\\testudi\\.nuget\\packages\\",
+      "outputPath": "D:\\SLIIIT\\4th Year\\EAD\\EVWebServerAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\testudi\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
