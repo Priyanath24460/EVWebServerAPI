@@ -33,9 +33,31 @@ namespace EVChargingBookingAPI.Repositories
 
         public async Task<List<Booking>> GetUpcomingByEVOwnerNICAsync(string nic)
         {
-            return await _context.Bookings.Find(b => b.EVOwnerNIC == nic && b.ReservationDateTime >= DateTime.UtcNow)
+            var activeStatuses = new[] { "Pending", "Approved" };
+            return await _context.Bookings.Find(b => b.EVOwnerNIC == nic && 
+                b.ReservationDateTime >= DateTime.UtcNow && 
+                activeStatuses.Contains(b.Status))
+                .SortBy(b => b.ReservationDateTime)
+                .ToListAsync();
+        }
+
+        public async Task<List<Booking>> GetHistoryByEVOwnerNICAsync(string nic)
+        {
+            var historyStatuses = new[] { "Completed", "Cancelled" };
+            return await _context.Bookings.Find(b => b.EVOwnerNIC == nic && 
+                (b.ReservationDateTime < DateTime.UtcNow || historyStatuses.Contains(b.Status)))
                 .SortByDescending(b => b.ReservationDateTime)
                 .ToListAsync();
+        }
+
+        public async Task<int> GetPendingCountByEVOwnerNICAsync(string nic)
+        {
+            return (int)await _context.Bookings.CountDocumentsAsync(b => b.EVOwnerNIC == nic && b.Status == "Pending");
+        }
+
+        public async Task<int> GetApprovedCountByEVOwnerNICAsync(string nic)
+        {
+            return (int)await _context.Bookings.CountDocumentsAsync(b => b.EVOwnerNIC == nic && b.Status == "Approved");
         }
 
         public async Task CreateAsync(Booking booking)

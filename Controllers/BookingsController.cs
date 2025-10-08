@@ -80,6 +80,69 @@ namespace EVChargingBookingAPI.Controllers
         }
 
         /// <summary>
+        /// Get booking history for an EV owner
+        /// </summary>
+        [HttpGet("history/{nic}")]
+        public async Task<ActionResult<List<Booking>>> GetBookingHistory(string nic)
+        {
+            try
+            {
+                var bookings = await _bookingService.GetBookingHistoryByEVOwnerAsync(nic);
+                return Ok(bookings);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Get pending bookings count for an EV owner
+        /// </summary>
+        [HttpGet("pending/count/{nic}")]
+        public async Task<ActionResult<int>> GetPendingBookingsCount(string nic)
+        {
+            try
+            {
+                var count = await _bookingService.GetPendingBookingsCountAsync(nic);
+                return Ok(count);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Get approved bookings count for an EV owner
+        /// </summary>
+        [HttpGet("approved/count/{nic}")]
+        public async Task<ActionResult<int>> GetApprovedBookingsCount(string nic)
+        {
+            try
+            {
+                var count = await _bookingService.GetApprovedBookingsCountAsync(nic);
+                return Ok(count);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
         /// Create a new booking
         /// </summary>
         [HttpPost]
