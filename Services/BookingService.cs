@@ -133,8 +133,8 @@ namespace EVChargingBookingAPI.Services
                 throw new InvalidOperationException("Booking can only be cancelled at least 12 hours before reservation");
             }
 
-            booking.Status = "Cancelled";
-            await _bookingRepository.UpdateAsync(id, booking);
+            // Delete the booking instead of updating status
+            await _bookingRepository.DeleteAsync(id);
             return true;
         }
 
