@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "D:\\SLIIIT\\4th Year\\EAD\\EVWebServerAPI\\EVChargingBookingAPI.csproj": {}
   },
   "projects": {
@@ -13,19 +12,6 @@
         "projectPath": "D:\\SLIIIT\\4th Year\\EAD\\EVWebServerAPI\\EVChargingBookingAPI.csproj",
         "packagesPath": "C:\\Users\\testudi\\.nuget\\packages\\",
         "outputPath": "D:\\SLIIIT\\4th Year\\EAD\\EVWebServerAPI\\obj\\",
-=======
-    "D:\\Web and mobile connect\\EVWebServerAPI\\EVChargingBookingAPI.csproj": {}
-  },
-  "projects": {
-    "D:\\Web and mobile connect\\EVWebServerAPI\\EVChargingBookingAPI.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\Web and mobile connect\\EVWebServerAPI\\EVChargingBookingAPI.csproj",
-        "projectName": "EVChargingBookingAPI",
-        "projectPath": "D:\\Web and mobile connect\\EVWebServerAPI\\EVChargingBookingAPI.csproj",
-        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "D:\\Web and mobile connect\\EVWebServerAPI\\obj\\",
->>>>>>> fb818ed57bd1f4ee0a58e7ddc23e2678702c3fb7
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\testudi\\AppData\\Roaming\\NuGet\\NuGet.Config"
