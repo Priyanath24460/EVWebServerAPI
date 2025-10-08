@@ -39,6 +39,39 @@ namespace EVChargingBookingAPI.Services
             return await _bookingRepository.GetUpcomingByEVOwnerNICAsync(nic);
         }
 
+        public async Task<List<Booking>> GetBookingHistoryByEVOwnerAsync(string nic)
+        {
+            var evOwner = await _evOwnerRepository.GetByNICAsync(nic);
+            if (evOwner == null || !evOwner.IsActive)
+            {
+                throw new ArgumentException("EV Owner not found or inactive");
+            }
+
+            return await _bookingRepository.GetHistoryByEVOwnerNICAsync(nic);
+        }
+
+        public async Task<int> GetPendingBookingsCountAsync(string nic)
+        {
+            var evOwner = await _evOwnerRepository.GetByNICAsync(nic);
+            if (evOwner == null || !evOwner.IsActive)
+            {
+                throw new ArgumentException("EV Owner not found or inactive");
+            }
+
+            return await _bookingRepository.GetPendingCountByEVOwnerNICAsync(nic);
+        }
+
+        public async Task<int> GetApprovedBookingsCountAsync(string nic)
+        {
+            var evOwner = await _evOwnerRepository.GetByNICAsync(nic);
+            if (evOwner == null || !evOwner.IsActive)
+            {
+                throw new ArgumentException("EV Owner not found or inactive");
+            }
+
+            return await _bookingRepository.GetApprovedCountByEVOwnerNICAsync(nic);
+        }
+
         public async Task<Booking> CreateBookingAsync(Booking booking)
         {
             // Business Logic: Reservation must be within 7 days

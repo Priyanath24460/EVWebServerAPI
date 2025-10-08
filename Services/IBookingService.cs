@@ -10,6 +10,9 @@ namespace EVChargingBookingAPI.Services
         Task<List<Booking>> GetAllBookingsAsync();
         Task<Booking> GetBookingByIdAsync(string id);
         Task<List<Booking>> GetUpcomingBookingsByEVOwnerAsync(string nic);
+        Task<List<Booking>> GetBookingHistoryByEVOwnerAsync(string nic);
+        Task<int> GetPendingBookingsCountAsync(string nic);
+        Task<int> GetApprovedBookingsCountAsync(string nic);
         Task<Booking> CreateBookingAsync(Booking booking);
         Task<Booking> UpdateBookingAsync(string id, Booking booking);
         Task<bool> CancelBookingAsync(string id);
