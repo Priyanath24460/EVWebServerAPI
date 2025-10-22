@@ -18,5 +18,6 @@ namespace EVChargingBookingAPI.Repositories
         Task UpdateAsync(string id, Booking booking);
         Task DeleteAsync(string id);
         Task<bool> HasActiveBookingsForStationAsync(string stationId);
+        Task<List<Booking>> GetByChargingStationIdAsync(string stationId);
     }
 }

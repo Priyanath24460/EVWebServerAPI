@@ -85,5 +85,13 @@ namespace EVChargingBookingAPI.Repositories
                 .Find(b => b.ChargingStationId == stationId && activeStatuses.Contains(b.Status))
                 .AnyAsync();
         }
+
+        public async Task<List<Booking>> GetByChargingStationIdAsync(string stationId)
+        {
+            return await _context.Bookings
+                .Find(b => b.ChargingStationId == stationId)
+                .SortByDescending(b => b.ReservationDateTime)
+                .ToListAsync();
+        }
     }
 }
