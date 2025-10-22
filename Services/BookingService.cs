@@ -151,5 +151,10 @@ namespace EVChargingBookingAPI.Services
             bool isWithinPeriod = reservationDateTime <= maxAllowedDate && reservationDateTime >= DateTime.UtcNow;
             return await Task.FromResult(isWithinPeriod);
         }
+
+        public async Task<List<Booking>> GetBookingsByStationIdAsync(string stationId)
+        {
+            return await _bookingRepository.GetByChargingStationIdAsync(stationId);
+        }
     }
 }
