@@ -198,7 +198,29 @@ namespace EVChargingBookingAPI.Services
                 UpdatedAt = DateTime.UtcNow
             };
 
+            // Save the booking first to get an ID
             await _bookingRepository.CreateAsync(booking);
+
+            // Generate booking reference
+            booking.BookingReference = $"EVB{DateTime.UtcNow:yyyyMMddHHmmss}";
+
+            // Generate QR code data using the QR code service (injected dependency needed)
+            // For now, create a simple QR code data string
+            var qrData = new
+            {
+                BookingId = booking.Id,
+                BookingReference = booking.BookingReference,
+                StationId = booking.ChargingStationId,
+                ChargingPoint = booking.ChargingPointNumber,
+                Date = booking.BookingDate.ToString("yyyy-MM-dd"),
+                TimeSlot = booking.TimeSlot,
+                EVOwnerNIC = booking.EVOwnerNIC
+            };
+            booking.QRCodeData = System.Text.Json.JsonSerializer.Serialize(qrData);
+
+            // Update the booking with the reference and QR code data
+            await _bookingRepository.UpdateAsync(booking.Id, booking);
+
             return booking;
         }
     }
