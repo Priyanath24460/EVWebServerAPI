@@ -75,7 +75,7 @@ namespace EVChargingBookingAPI.Services
         public async Task<Booking> CreateBookingAsync(Booking booking)
         {
             // Business Logic: Reservation must be within 7 days
-            if (!await IsReservationWithinAllowedPeriodAsync(booking.ReservationDateTime))
+            if (!await IsReservationWithinAllowedPeriodAsync(booking.StartTime))
             {
                 throw new InvalidOperationException("Reservation must be within 7 days from booking date");
             }
@@ -100,15 +100,15 @@ namespace EVChargingBookingAPI.Services
             }
 
             // Business Logic: Can only update at least 12 hours before reservation
-            if (!await CanModifyBookingAsync(existingBooking.ReservationDateTime))
+            if (!await CanModifyBookingAsync(existingBooking.StartTime))
             {
                 throw new InvalidOperationException("Booking can only be modified at least 12 hours before reservation");
             }
 
             // Business Logic: If changing reservation time, must be within 7 days
-            if (booking.ReservationDateTime != existingBooking.ReservationDateTime)
+            if (booking.StartTime != existingBooking.StartTime)
             {
-                if (!await IsReservationWithinAllowedPeriodAsync(booking.ReservationDateTime))
+                if (!await IsReservationWithinAllowedPeriodAsync(booking.StartTime))
                 {
                     throw new InvalidOperationException("Reservation must be within 7 days from booking date");
                 }
@@ -128,7 +128,7 @@ namespace EVChargingBookingAPI.Services
             }
 
             // Business Logic: Can only cancel at least 12 hours before reservation
-            if (!await CanModifyBookingAsync(booking.ReservationDateTime))
+            if (!await CanModifyBookingAsync(booking.StartTime))
             {
                 throw new InvalidOperationException("Booking can only be cancelled at least 12 hours before reservation");
             }
@@ -138,17 +138,17 @@ namespace EVChargingBookingAPI.Services
             return true;
         }
 
-        public async Task<bool> CanModifyBookingAsync(DateTime reservationDateTime)
+        public async Task<bool> CanModifyBookingAsync(DateTime startTime)
         {
-            var timeDifference = reservationDateTime - DateTime.UtcNow;
+            var timeDifference = startTime - DateTime.UtcNow;
             bool canModify = timeDifference.TotalHours >= 12;
             return await Task.FromResult(canModify);
         }
 
-        public async Task<bool> IsReservationWithinAllowedPeriodAsync(DateTime reservationDateTime)
+        public async Task<bool> IsReservationWithinAllowedPeriodAsync(DateTime startTime)
         {
             var maxAllowedDate = DateTime.UtcNow.AddDays(7);
-            bool isWithinPeriod = reservationDateTime <= maxAllowedDate && reservationDateTime >= DateTime.UtcNow;
+            bool isWithinPeriod = startTime <= maxAllowedDate && startTime >= DateTime.UtcNow;
             return await Task.FromResult(isWithinPeriod);
         }
 

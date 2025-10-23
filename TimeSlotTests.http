@@ -1,0 +1,59 @@
+### Test Time Slot APIs
+
+# Get station availability for a specific date
+GET http://localhost:5000/api/timeslots/station/672e52c7b97e47b5c3fcee11/availability?date=2025-10-24
+Content-Type: application/json
+
+###
+
+# Get only available time slots
+GET http://localhost:5000/api/timeslots/station/672e52c7b97e47b5c3fcee11/available?date=2025-10-24
+Content-Type: application/json
+
+###
+
+# Check specific time slot availability
+GET http://localhost:5000/api/timeslots/station/672e52c7b97e47b5c3fcee11/point/1/check?date=2025-10-24&timeSlot=9
+Content-Type: application/json
+
+###
+
+# Create a time slot booking
+POST http://localhost:5000/api/timeslots/book
+Content-Type: application/json
+
+{
+  "chargingStationId": "672e52c7b97e47b5c3fcee11",
+  "evOwnerNIC": "123456789V",
+  "chargingPointNumber": 1,
+  "bookingDate": "2025-10-24",
+  "timeSlot": 9
+}
+
+###
+
+# Test another booking on the same slot (should fail)
+POST http://localhost:5000/api/timeslots/book
+Content-Type: application/json
+
+{
+  "chargingStationId": "672e52c7b97e47b5c3fcee11",
+  "evOwnerNIC": "987654321V",
+  "chargingPointNumber": 1,
+  "bookingDate": "2025-10-24",
+  "timeSlot": 9
+}
+
+###
+
+# Book a different time slot (should succeed)
+POST http://localhost:5000/api/timeslots/book
+Content-Type: application/json
+
+{
+  "chargingStationId": "672e52c7b97e47b5c3fcee11",
+  "evOwnerNIC": "987654321V",
+  "chargingPointNumber": 2,
+  "bookingDate": "2025-10-24",
+  "timeSlot": 10
+}

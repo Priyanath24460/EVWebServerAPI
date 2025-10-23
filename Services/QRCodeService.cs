@@ -35,11 +35,11 @@ namespace EVChargingBookingAPI.Services
                 BookingReference = booking.BookingReference,
                 EVOwnerNIC = booking.EVOwnerNIC,
                 ChargingStationId = booking.ChargingStationId,
-                SlotId = booking.SlotId,
-                ReservationDateTime = booking.ReservationDateTime,
+                ChargingPointNumber = booking.ChargingPointNumber,
+                StartTime = booking.StartTime,
                 DurationMinutes = booking.DurationMinutes,
                 GeneratedAt = DateTime.UtcNow,
-                ExpiresAt = booking.ReservationDateTime.AddHours(1), // QR expires 1 hour after reservation time
+                ExpiresAt = booking.StartTime.AddHours(1), // QR expires 1 hour after reservation time
                 Version = "1.0"
             };
 
@@ -111,8 +111,8 @@ namespace EVChargingBookingAPI.Services
         public string BookingReference { get; set; } = string.Empty;
         public string EVOwnerNIC { get; set; } = string.Empty;
         public string ChargingStationId { get; set; } = string.Empty;
-        public string SlotId { get; set; } = string.Empty;
-        public DateTime ReservationDateTime { get; set; }
+        public int ChargingPointNumber { get; set; }
+        public DateTime StartTime { get; set; }
         public int DurationMinutes { get; set; }
         public DateTime GeneratedAt { get; set; }
         public DateTime ExpiresAt { get; set; }

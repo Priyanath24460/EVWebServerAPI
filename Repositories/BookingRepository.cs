@@ -35,9 +35,9 @@ namespace EVChargingBookingAPI.Repositories
         {
             var activeStatuses = new[] { "Pending", "Approved" };
             return await _context.Bookings.Find(b => b.EVOwnerNIC == nic && 
-                b.ReservationDateTime >= DateTime.UtcNow && 
+                b.StartTime >= DateTime.UtcNow && 
                 activeStatuses.Contains(b.Status))
-                .SortBy(b => b.ReservationDateTime)
+                .SortBy(b => b.StartTime)
                 .ToListAsync();
         }
 
@@ -45,8 +45,8 @@ namespace EVChargingBookingAPI.Repositories
         {
             var historyStatuses = new[] { "Completed", "Cancelled" };
             return await _context.Bookings.Find(b => b.EVOwnerNIC == nic && 
-                (b.ReservationDateTime < DateTime.UtcNow || historyStatuses.Contains(b.Status)))
-                .SortByDescending(b => b.ReservationDateTime)
+                (b.StartTime < DateTime.UtcNow || historyStatuses.Contains(b.Status)))
+                .SortByDescending(b => b.StartTime)
                 .ToListAsync();
         }
 
@@ -90,8 +90,41 @@ namespace EVChargingBookingAPI.Repositories
         {
             return await _context.Bookings
                 .Find(b => b.ChargingStationId == stationId)
-                .SortByDescending(b => b.ReservationDateTime)
+                .SortByDescending(b => b.StartTime)
                 .ToListAsync();
+        }
+
+        // Time slot specific methods
+        public async Task<List<Booking>> GetBookingsByStationAndDateAsync(string stationId, DateTime date)
+        {
+            var startOfDay = date.Date;
+            var endOfDay = startOfDay.AddDays(1);
+            
+            return await _context.Bookings
+                .Find(b => b.ChargingStationId == stationId && 
+                          b.BookingDate >= startOfDay && 
+                          b.BookingDate < endOfDay &&
+                          b.Status != "Cancelled")
+                .ToListAsync();
+        }
+
+        public async Task<Booking?> GetBookingByTimeSlotAsync(string stationId, int chargingPointNumber, DateTime date, int timeSlot)
+        {
+            var bookingDate = date.Date;
+            
+            return await _context.Bookings
+                .Find(b => b.ChargingStationId == stationId && 
+                          b.ChargingPointNumber == chargingPointNumber &&
+                          b.BookingDate == bookingDate &&
+                          b.TimeSlot == timeSlot &&
+                          b.Status != "Cancelled")
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<bool> IsTimeSlotAvailableAsync(string stationId, int chargingPointNumber, DateTime date, int timeSlot)
+        {
+            var booking = await GetBookingByTimeSlotAsync(stationId, chargingPointNumber, date, timeSlot);
+            return booking == null;
         }
     }
 }

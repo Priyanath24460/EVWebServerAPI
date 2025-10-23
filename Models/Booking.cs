@@ -21,14 +21,20 @@ namespace EVChargingBookingAPI.Models
         [BsonElement("chargingStationId")]
         public string ChargingStationId { get; set; } = string.Empty;
 
-        [BsonElement("slotId")]
-        public string SlotId { get; set; } = string.Empty;
-
-        [BsonElement("reservationDateTime")]
-        public DateTime ReservationDateTime { get; set; }
+        [BsonElement("chargingPointNumber")]
+        public int ChargingPointNumber { get; set; } // 1, 2, or 3
 
         [BsonElement("bookingDate")]
-        public DateTime BookingDate { get; set; } = DateTime.UtcNow;
+        public DateTime BookingDate { get; set; } // Date only (YYYY-MM-DD)
+
+        [BsonElement("timeSlot")]
+        public int TimeSlot { get; set; } // 0-23 (hour of the day)
+
+        [BsonElement("startTime")]
+        public DateTime StartTime { get; set; } // Full start datetime
+
+        [BsonElement("endTime")]
+        public DateTime EndTime { get; set; } // Full end datetime
 
         [BsonElement("durationMinutes")]
         public int DurationMinutes { get; set; } = 60; // Default 1 hour

@@ -24,6 +24,7 @@ builder.Services.AddScoped<IBookingService, BookingService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IChargingStationService, ChargingStationService>();
 builder.Services.AddScoped<IQRCodeService, QRCodeService>();
+builder.Services.AddScoped<ITimeSlotService, TimeSlotService>();
 
 // Add controllers, Swagger, and CORS
 builder.Services.AddControllers();

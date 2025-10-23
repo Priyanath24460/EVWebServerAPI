@@ -257,7 +257,7 @@ namespace EVChargingBookingAPI.Controllers
                     return NotFound($"Booking with ID {id} not found");
                 }
 
-                var canModify = await _bookingService.CanModifyBookingAsync(booking.ReservationDateTime);
+                var canModify = await _bookingService.CanModifyBookingAsync(booking.StartTime);
                 return Ok(canModify);
             }
             catch (Exception ex)
@@ -317,8 +317,8 @@ namespace EVChargingBookingAPI.Controllers
                     BookingReference = qrData.BookingReference,
                     EVOwnerNIC = qrData.EVOwnerNIC,
                     ChargingStationId = qrData.ChargingStationId,
-                    SlotId = qrData.SlotId,
-                    ReservationDateTime = qrData.ReservationDateTime,
+                    ChargingPointNumber = qrData.ChargingPointNumber,
+                    StartTime = qrData.StartTime,
                     DurationMinutes = qrData.DurationMinutes,
                     Status = booking?.Status ?? "Unknown"
                 };
@@ -388,8 +388,8 @@ namespace EVChargingBookingAPI.Controllers
         public string BookingReference { get; set; } = string.Empty;
         public string EVOwnerNIC { get; set; } = string.Empty;
         public string ChargingStationId { get; set; } = string.Empty;
-        public string SlotId { get; set; } = string.Empty;
-        public DateTime ReservationDateTime { get; set; }
+        public int ChargingPointNumber { get; set; }
+        public DateTime StartTime { get; set; }
         public int DurationMinutes { get; set; }
         public string Status { get; set; } = string.Empty;
         public string ErrorMessage { get; set; } = string.Empty;

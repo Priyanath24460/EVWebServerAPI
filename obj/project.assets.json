@@ -1068,19 +1068,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\testudi\\.nuget\\packages\\": {}
+    "C:\\Users\\Asus\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SLIIIT\\4th Year\\EAD\\EVWebServerAPI\\EVChargingBookingAPI.csproj",
+      "projectUniqueName": "D:\\Web and mobile connect\\EVWebServerAPI\\EVChargingBookingAPI.csproj",
       "projectName": "EVChargingBookingAPI",
-      "projectPath": "D:\\SLIIIT\\4th Year\\EAD\\EVWebServerAPI\\EVChargingBookingAPI.csproj",
-      "packagesPath": "C:\\Users\\testudi\\.nuget\\packages\\",
-      "outputPath": "D:\\SLIIIT\\4th Year\\EAD\\EVWebServerAPI\\obj\\",
+      "projectPath": "D:\\Web and mobile connect\\EVWebServerAPI\\EVChargingBookingAPI.csproj",
+      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+      "outputPath": "D:\\Web and mobile connect\\EVWebServerAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\testudi\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -1152,13 +1152,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.414/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file D:\\SLIIIT\\4th Year\\EAD\\EVWebServerAPI\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

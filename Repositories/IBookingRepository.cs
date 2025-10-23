@@ -19,5 +19,10 @@ namespace EVChargingBookingAPI.Repositories
         Task DeleteAsync(string id);
         Task<bool> HasActiveBookingsForStationAsync(string stationId);
         Task<List<Booking>> GetByChargingStationIdAsync(string stationId);
+        
+        // Time slot specific methods
+        Task<List<Booking>> GetBookingsByStationAndDateAsync(string stationId, DateTime date);
+        Task<Booking?> GetBookingByTimeSlotAsync(string stationId, int chargingPointNumber, DateTime date, int timeSlot);
+        Task<bool> IsTimeSlotAvailableAsync(string stationId, int chargingPointNumber, DateTime date, int timeSlot);
     }
 }
