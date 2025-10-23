@@ -155,21 +155,6 @@ D:\Web and mobile connect\WebServerAPI\obj\Release\net8.0\EVChargingBookingAPI.g
 D:\Web and mobile connect\WebServerAPI\obj\Release\net8.0\ref\EVChargingBookingAPI.dll
 D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\appsettings.Development.json
 D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\appsettings.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\appsettings.Development.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\appsettings.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\appsettings.Development.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\appsettings.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\web.config
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\web.config
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\web.config
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\EVChargingBookingAPI.deps.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\EVChargingBookingAPI.runtimeconfig.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\EVChargingBookingAPI.deps.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\EVChargingBookingAPI.runtimeconfig.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\appsettings.Development.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\appsettings.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\EVChargingBookingAPI.deps.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json
 D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\EVChargingBookingAPI.exe
 D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\EVChargingBookingAPI.deps.json
 D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\EVChargingBookingAPI.runtimeconfig.json
@@ -215,16 +200,6 @@ D:\Web and mobile connect\EVWebServerApI\obj\Release\net8.0\refint\EVChargingBoo
 D:\Web and mobile connect\EVWebServerApI\obj\Release\net8.0\EVChargingBookingAPI.pdb
 D:\Web and mobile connect\EVWebServerApI\obj\Release\net8.0\EVChargingBookingAPI.genruntimeconfig.cache
 D:\Web and mobile connect\EVWebServerApI\obj\Release\net8.0\ref\EVChargingBookingAPI.dll
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\web.config
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\appsettings.Development.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\appsettings.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\EVChargingBookingAPI.deps.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\web.config
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\appsettings.Development.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\appsettings.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\EVChargingBookingAPI.deps.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json
 <<<<<<< HEAD
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\bin\Release\net8.0\appsettings.Development.json
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\bin\Release\net8.0\appsettings.json
@@ -304,61 +279,6 @@ D:\SLIIIT\4th Year\EAD\EVWebServerAPI\obj\Release\net8.0\EVChargingBookingAPI.pd
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\obj\Release\net8.0\EVChargingBookingAPI.genruntimeconfig.cache
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\obj\Release\net8.0\ref\EVChargingBookingAPI.dll
 =======
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\web.config
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\appsettings.Development.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\appsettings.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.deps.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\web.config
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\appsettings.Development.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\appsettings.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.deps.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\web.config
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\appsettings.Development.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\appsettings.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.deps.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\web.config
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\appsettings.Development.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\appsettings.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.deps.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\web.config
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\appsettings.Development.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\appsettings.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.deps.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\web.config
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\appsettings.Development.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\appsettings.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.deps.json
-D:\Web and mobile connect\EVWebServerApI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\web.config
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\appsettings.Development.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\appsettings.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.deps.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\web.config
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\appsettings.Development.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\appsettings.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.deps.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\web.config
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\appsettings.Development.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\appsettings.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.deps.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\web.config
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\appsettings.Development.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\appsettings.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.deps.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\web.config
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\appsettings.Development.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\appsettings.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.deps.json
-D:\Web and mobile connect\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json
 >>>>>>> fb818ed57bd1f4ee0a58e7ddc23e2678702c3fb7
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\web.config
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\publish\publish\publish\appsettings.Development.json
