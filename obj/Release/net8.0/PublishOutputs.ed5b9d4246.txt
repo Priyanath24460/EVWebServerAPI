@@ -1,4 +1,5 @@
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\publish\EVChargingBookingAPI.exe
+D:\SLIIIT\4th Year\EAD\EVWebServerAPI\publish\publish\publish\publish\publish\publish\web.config
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\publish\publish\publish\publish\publish\web.config
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\publish\publish\publish\publish\web.config
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\publish\publish\publish\web.config
@@ -21,6 +22,10 @@ D:\SLIIIT\4th Year\EAD\EVWebServerAPI\publish\publish\publish\publish\publish\ap
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\publish\publish\publish\publish\publish\appsettings.json
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\publish\publish\publish\publish\publish\EVChargingBookingAPI.deps.json
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\publish\publish\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json
+D:\SLIIIT\4th Year\EAD\EVWebServerAPI\publish\publish\publish\publish\publish\publish\appsettings.Development.json
+D:\SLIIIT\4th Year\EAD\EVWebServerAPI\publish\publish\publish\publish\publish\publish\appsettings.json
+D:\SLIIIT\4th Year\EAD\EVWebServerAPI\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.deps.json
+D:\SLIIIT\4th Year\EAD\EVWebServerAPI\publish\publish\publish\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\publish\EVChargingBookingAPI.dll
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\publish\EVChargingBookingAPI.deps.json
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\publish\EVChargingBookingAPI.runtimeconfig.json
