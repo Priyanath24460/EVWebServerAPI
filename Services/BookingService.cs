@@ -156,5 +156,10 @@ namespace EVChargingBookingAPI.Services
         {
             return await _bookingRepository.GetByChargingStationIdAsync(stationId);
         }
+
+        public async Task<List<Booking>> GetActiveBookingsByStationIdAsync(string stationId)
+        {
+            return await _bookingRepository.GetActiveBookingsByStationIdAsync(stationId);
+        }
     }
 }
