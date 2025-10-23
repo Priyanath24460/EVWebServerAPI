@@ -98,18 +98,27 @@ namespace EVChargingBookingAPI.Controllers
         /// Create a new time slot booking
         /// </summary>
         /// <param name="bookingDto">Booking details</param>
-        /// <returns>Created booking</returns>
+        /// <returns>Booking response with QR code</returns>
         [HttpPost("book")]
-        public async Task<ActionResult> CreateTimeSlotBooking([FromBody] CreateTimeSlotBookingDTO bookingDto)
+        public async Task<ActionResult<BookingResponseDTO>> CreateTimeSlotBooking([FromBody] CreateTimeSlotBookingDTO bookingDto)
         {
             try
             {
                 var booking = await _timeSlotService.CreateTimeSlotBookingAsync(bookingDto);
+                
+                var response = new BookingResponseDTO
+                {
+                    BookingId = booking.Id,
+                    Status = booking.Status,
+                    Message = "Booking created successfully",
+                    QrCodeData = booking.QRCodeData
+                };
+                
                 return CreatedAtAction(
                     nameof(BookingsController.GetById), 
                     "Bookings", 
                     new { id = booking.Id }, 
-                    booking);
+                    response);
             }
             catch (ArgumentException ex)
             {

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EVChargingBookingAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8ccb7190a08fe992c535d1017fb04ee859bd416b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9acec18ffe17f447d9b69cd9eb7eea8bcfb9d632")]
 [assembly: System.Reflection.AssemblyProductAttribute("EVChargingBookingAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EVChargingBookingAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
