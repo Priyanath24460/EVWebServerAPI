@@ -10,6 +10,7 @@ namespace EVChargingBookingAPI.Services
     public interface ITimeSlotService
     {
         Task<StationAvailabilityDTO> GetStationAvailabilityAsync(string stationId, DateTime date);
+        Task<MobileStationAvailabilityDTO> GetMobileStationAvailabilityAsync(string stationId, DateTime date);
         Task<List<ChargingPointSlotsDTO>> GetAvailableTimeSlotsAsync(string stationId, DateTime date);
         Task<bool> IsTimeSlotAvailableAsync(string stationId, int chargingPointNumber, DateTime date, int timeSlot);
         Task<Booking> CreateTimeSlotBookingAsync(CreateTimeSlotBookingDTO bookingDto);
@@ -76,6 +77,53 @@ namespace EVChargingBookingAPI.Services
             }
 
             return stationAvailability;
+        }
+
+        public async Task<MobileStationAvailabilityDTO> GetMobileStationAvailabilityAsync(string stationId, DateTime date)
+        {
+            var station = await _stationRepository.GetByIdAsync(stationId);
+            if (station == null)
+                throw new ArgumentException("Charging station not found");
+
+            var bookingDate = date.Date;
+            var existingBookings = await _bookingRepository.GetBookingsByStationAndDateAsync(stationId, bookingDate);
+
+            var mobileAvailability = new MobileStationAvailabilityDTO
+            {
+                stationId = stationId,
+                date = bookingDate.ToString("yyyy-MM-dd"),
+                chargingPoints = new List<MobileChargingPointSlotsDTO>()
+            };
+
+            // Generate time slots for each charging point
+            for (int pointNumber = 1; pointNumber <= CHARGING_POINTS_PER_STATION; pointNumber++)
+            {
+                var mobileChargingPointSlots = new MobileChargingPointSlotsDTO
+                {
+                    chargingPointNumber = pointNumber,
+                    timeSlots = new List<MobileTimeSlotDTO>()
+                };
+
+                // Generate 24 hourly slots for this charging point
+                for (int hour = 0; hour < HOURS_PER_DAY; hour++)
+                {
+                    var existingBooking = existingBookings.FirstOrDefault(b => 
+                        b.ChargingPointNumber == pointNumber && b.TimeSlot == hour);
+
+                    var mobileTimeSlot = new MobileTimeSlotDTO
+                    {
+                        hour = hour,
+                        displayTime = $"{hour:D2}:00",
+                        isAvailable = existingBooking == null
+                    };
+
+                    mobileChargingPointSlots.timeSlots.Add(mobileTimeSlot);
+                }
+
+                mobileAvailability.chargingPoints.Add(mobileChargingPointSlots);
+            }
+
+            return mobileAvailability;
         }
 
         public async Task<List<ChargingPointSlotsDTO>> GetAvailableTimeSlotsAsync(string stationId, DateTime date)

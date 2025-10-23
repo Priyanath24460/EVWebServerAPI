@@ -13,12 +13,31 @@ namespace EVChargingBookingAPI.DTOs
     }
 
     /// <summary>
+    /// Mobile-compatible time slot representation
+    /// </summary>
+    public class MobileTimeSlotDTO
+    {
+        public int hour { get; set; } // 0-23 (lowercase for mobile compatibility)
+        public string displayTime { get; set; } = string.Empty; // e.g., "09:00"
+        public bool isAvailable { get; set; } // lowercase for mobile compatibility
+    }
+
+    /// <summary>
     /// Represents available time slots for a charging point
     /// </summary>
     public class ChargingPointSlotsDTO
     {
         public int ChargingPointNumber { get; set; }
         public List<TimeSlotDTO> TimeSlots { get; set; } = new List<TimeSlotDTO>();
+    }
+
+    /// <summary>
+    /// Mobile-compatible charging point slots
+    /// </summary>
+    public class MobileChargingPointSlotsDTO
+    {
+        public int chargingPointNumber { get; set; } // lowercase for mobile compatibility
+        public List<MobileTimeSlotDTO> timeSlots { get; set; } = new List<MobileTimeSlotDTO>();
     }
 
     /// <summary>
@@ -30,6 +49,16 @@ namespace EVChargingBookingAPI.DTOs
         public string StationName { get; set; } = string.Empty;
         public DateTime Date { get; set; }
         public List<ChargingPointSlotsDTO> ChargingPoints { get; set; } = new List<ChargingPointSlotsDTO>();
+    }
+
+    /// <summary>
+    /// Mobile-compatible station availability response
+    /// </summary>
+    public class MobileStationAvailabilityDTO
+    {
+        public string stationId { get; set; } = string.Empty; // lowercase for mobile compatibility
+        public string date { get; set; } = string.Empty; // string format for mobile compatibility
+        public List<MobileChargingPointSlotsDTO> chargingPoints { get; set; } = new List<MobileChargingPointSlotsDTO>();
     }
 
     /// <summary>

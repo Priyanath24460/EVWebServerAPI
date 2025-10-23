@@ -21,14 +21,14 @@ namespace EVChargingBookingAPI.Controllers
         /// <param name="stationId">Charging station ID</param>
         /// <param name="date">Date to check (YYYY-MM-DD)</param>
         /// <returns>Complete availability information with all time slots</returns>
-        [HttpGet("station/{stationId}/availability")]
-        public async Task<ActionResult<StationAvailabilityDTO>> GetStationAvailability(
+        [HttpGet("availability/{stationId}")]
+        public async Task<ActionResult<MobileStationAvailabilityDTO>> GetStationAvailability(
             string stationId, 
             [FromQuery] DateTime date)
         {
             try
             {
-                var availability = await _timeSlotService.GetStationAvailabilityAsync(stationId, date);
+                var availability = await _timeSlotService.GetMobileStationAvailabilityAsync(stationId, date);
                 return Ok(availability);
             }
             catch (ArgumentException ex)
