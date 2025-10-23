@@ -265,3 +265,8 @@ D:\SLIIIT\4th Year\EAD\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\appsettings.json
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\EVChargingBookingAPI.deps.json
 D:\SLIIIT\4th Year\EAD\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json
+D:\SLIIIT\4th Year\EAD\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\web.config
+D:\SLIIIT\4th Year\EAD\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\appsettings.Development.json
+D:\SLIIIT\4th Year\EAD\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\appsettings.json
+D:\SLIIIT\4th Year\EAD\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\EVChargingBookingAPI.deps.json
+D:\SLIIIT\4th Year\EAD\EVWebServerAPI\bin\Release\net8.0\publish\publish\publish\publish\EVChargingBookingAPI.runtimeconfig.json

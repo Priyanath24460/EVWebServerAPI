@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using EVChargingBookingAPI.Models;
 using EVChargingBookingAPI.Services;
-using EVChargingBookingAPI.Middleware;
 
 namespace EVChargingBookingAPI.Controllers
 {
@@ -14,13 +13,11 @@ namespace EVChargingBookingAPI.Controllers
     {
         private readonly IBookingService _bookingService;
         private readonly IQRCodeService _qrCodeService;
-        private readonly IChargingStationService _chargingStationService;
 
-        public BookingsController(IBookingService bookingService, IQRCodeService qrCodeService, IChargingStationService chargingStationService)
+        public BookingsController(IBookingService bookingService, IQRCodeService qrCodeService)
         {
             _bookingService = bookingService;
             _qrCodeService = qrCodeService;
-            _chargingStationService = chargingStationService;
         }
 
         /// <summary>
@@ -121,36 +118,15 @@ namespace EVChargingBookingAPI.Controllers
         }
 
         /// <summary>
-        /// Get all bookings for stations assigned to the current Station Operator
+        /// Get active bookings for a specific charging station (for station owners)
         /// </summary>
-        [HttpGet("my-stations-bookings")]
-        [RequireRole("StationOperator")]
-        public async Task<ActionResult<List<Booking>>> GetMyStationsBookings()
+        [HttpGet("station/{stationId}/active")]
+        public async Task<ActionResult<List<Booking>>> GetActiveBookingsByStation(string stationId)
         {
             try
             {
-                var operatorId = HttpContext.Items["UserId"]?.ToString();
-                if (string.IsNullOrEmpty(operatorId))
-                {
-                    return Unauthorized("Operator ID not found");
-                }
-
-                var allBookings = new List<Booking>();
-                
-                // Get stations assigned to this operator
-                var stations = await _chargingStationService.GetStationsByOperatorIdAsync(operatorId);
-                
-                // Get bookings for each station
-                foreach (var station in stations)
-                {
-                    var stationBookings = await _bookingService.GetBookingsByStationIdAsync(station.Id);
-                    allBookings.AddRange(stationBookings);
-                }
-                
-                // Sort by booking date/time (most recent first)
-                allBookings = allBookings.OrderByDescending(b => b.CreatedAt).ToList();
-                
-                return Ok(allBookings);
+                var bookings = await _bookingService.GetActiveBookingsByStationIdAsync(stationId);
+                return Ok(bookings);
             }
             catch (Exception ex)
             {

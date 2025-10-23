@@ -94,6 +94,16 @@ namespace EVChargingBookingAPI.Repositories
                 .ToListAsync();
         }
 
+        public async Task<List<Booking>> GetActiveBookingsByStationIdAsync(string stationId)
+        {
+            return await _context.Bookings
+                .Find(b => b.ChargingStationId == stationId && 
+                          b.Status == "Approved" && 
+                          b.StartTime >= DateTime.UtcNow)
+                .SortBy(b => b.StartTime)
+                .ToListAsync();
+        }
+
         // Time slot specific methods
         public async Task<List<Booking>> GetBookingsByStationAndDateAsync(string stationId, DateTime date)
         {

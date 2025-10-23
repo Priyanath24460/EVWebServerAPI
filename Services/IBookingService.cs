@@ -19,5 +19,6 @@ namespace EVChargingBookingAPI.Services
         Task<bool> CanModifyBookingAsync(DateTime startTime);
         Task<bool> IsReservationWithinAllowedPeriodAsync(DateTime startTime);
         Task<List<Booking>> GetBookingsByStationIdAsync(string stationId);
+        Task<List<Booking>> GetActiveBookingsByStationIdAsync(string stationId);
     }
 }
