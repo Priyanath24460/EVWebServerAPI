@@ -129,10 +129,11 @@ namespace EVChargingBookingAPI.Services
                 throw new ArgumentException("Booking not found");
             }
 
-            // Business Logic: Can only cancel at least 12 hours before reservation
-            if (!await CanModifyBookingAsync(booking.StartTime))
+            // Allow cancellation at any time for Pending and Approved bookings
+            // No time restriction as per user requirement
+            if (booking.Status != "Pending" && booking.Status != "Approved")
             {
-                throw new InvalidOperationException("Booking can only be cancelled at least 12 hours before reservation");
+                throw new InvalidOperationException("Only Pending and Approved bookings can be cancelled");
             }
 
             // Delete the booking instead of updating status
