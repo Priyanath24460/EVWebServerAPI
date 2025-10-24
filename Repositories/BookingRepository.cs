@@ -34,8 +34,12 @@ namespace EVChargingBookingAPI.Repositories
         public async Task<List<Booking>> GetUpcomingByEVOwnerNICAsync(string nic)
         {
             var activeStatuses = new[] { "Pending", "Approved" };
+            var currentDateTime = DateTime.UtcNow;
+            
+            // Include bookings that haven't ended yet (end time is in the future)
+            // or bookings that start in the future
             return await _context.Bookings.Find(b => b.EVOwnerNIC == nic && 
-                b.StartTime >= DateTime.UtcNow && 
+                (b.EndTime >= currentDateTime || b.StartTime >= currentDateTime) && 
                 activeStatuses.Contains(b.Status))
                 .SortBy(b => b.StartTime)
                 .ToListAsync();
