@@ -214,6 +214,55 @@ namespace EVChargingBookingAPI.Controllers
             var userJson = System.Text.Json.JsonSerializer.Serialize(user);
             return Convert.ToBase64String(Encoding.UTF8.GetBytes(userJson));
         }
+
+        /// <summary>
+        /// Update Station Operator credentials
+        /// </summary>
+        [HttpPut("users/{username}/update-credentials")]
+        public async Task<ActionResult<string>> UpdateOperatorCredentials(string username, [FromBody] UpdateCredentialsRequest request)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(request.Username) || string.IsNullOrEmpty(request.Password))
+                {
+                    return BadRequest("Username and password are required");
+                }
+
+                if (request.Password.Length < 6)
+                {
+                    return BadRequest("Password must be at least 6 characters long");
+                }
+
+                // Get the current user
+                var user = await _userService.GetUserByUsernameAsync(username);
+                if (user == null || user.Role != "StationOperator")
+                {
+                    return NotFound("Station Operator not found");
+                }
+
+                // Check if new username already exists (for different user)
+                if (request.Username != username)
+                {
+                    var existingUser = await _userService.GetUserByUsernameAsync(request.Username);
+                    if (existingUser != null)
+                    {
+                        return BadRequest("Username already exists");
+                    }
+                }
+
+                // Update the credentials
+                user.Username = request.Username;
+                user.PasswordHash = HashPassword(request.Password);
+
+                await _userService.UpdateUserAsync(user.Id, user);
+
+                return Ok("Credentials updated successfully");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
     }
 
     public class LoginRequest
@@ -269,6 +318,12 @@ namespace EVChargingBookingAPI.Controllers
     {
         public string Username { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+    }
+
+    public class UpdateCredentialsRequest
+    {
+        public string Username { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
     }
 }
