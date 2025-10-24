@@ -10,11 +10,13 @@ namespace EVChargingBookingAPI.Services
     {
         private readonly IBookingRepository _bookingRepository;
         private readonly IEVOwnerRepository _evOwnerRepository;
+        private readonly IChargingStationService _chargingStationService;
 
-        public BookingService(IBookingRepository bookingRepository, IEVOwnerRepository evOwnerRepository)
+        public BookingService(IBookingRepository bookingRepository, IEVOwnerRepository evOwnerRepository, IChargingStationService chargingStationService)
         {
             _bookingRepository = bookingRepository;
             _evOwnerRepository = evOwnerRepository;
+            _chargingStationService = chargingStationService;
         }
 
         public async Task<List<Booking>> GetAllBookingsAsync()
@@ -160,6 +162,21 @@ namespace EVChargingBookingAPI.Services
         public async Task<List<Booking>> GetActiveBookingsByStationIdAsync(string stationId)
         {
             return await _bookingRepository.GetActiveBookingsByStationIdAsync(stationId);
+        }
+
+        public async Task<List<Booking>> GetBookingsByOperatorUsernameAsync(string operatorUsername)
+        {
+            // Get all stations to find the one assigned to this operator
+            var allStations = await _chargingStationService.GetAllStationsAsync();
+            var operatorStation = allStations.FirstOrDefault(s => s.AssignedOperatorUsername == operatorUsername);
+            
+            if (operatorStation == null)
+            {
+                throw new ArgumentException($"No station found for operator: {operatorUsername}");
+            }
+
+            // Get all bookings for this station
+            return await _bookingRepository.GetByChargingStationIdAsync(operatorStation.Id);
         }
     }
 }

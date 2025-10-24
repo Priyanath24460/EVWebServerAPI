@@ -135,6 +135,27 @@ namespace EVChargingBookingAPI.Controllers
         }
 
         /// <summary>
+        /// Get all bookings for a station operator's assigned station
+        /// </summary>
+        [HttpGet("operator/{operatorUsername}")]
+        public async Task<ActionResult<List<Booking>>> GetBookingsByOperator(string operatorUsername)
+        {
+            try
+            {
+                var bookings = await _bookingService.GetBookingsByOperatorUsernameAsync(operatorUsername);
+                return Ok(bookings);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
         /// Get pending bookings count for an EV owner
         /// </summary>
         [HttpGet("pending/count/{nic}")]
