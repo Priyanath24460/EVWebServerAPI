@@ -178,5 +178,22 @@ namespace EVChargingBookingAPI.Services
             // Get all bookings for this station
             return await _bookingRepository.GetByChargingStationIdAsync(operatorStation.Id);
         }
+
+        /// <summary>
+        /// Update booking status directly (for operators - bypasses time restrictions)
+        /// </summary>
+        public async Task<Booking> UpdateBookingStatusDirectAsync(string id, Booking booking)
+        {
+            var existingBooking = await _bookingRepository.GetByIdAsync(id);
+            if (existingBooking == null)
+            {
+                throw new ArgumentException("Booking not found");
+            }
+
+            // Direct update without business rule validation (for operator use)
+            booking.Id = id;
+            await _bookingRepository.UpdateAsync(id, booking);
+            return booking;
+        }
     }
 }

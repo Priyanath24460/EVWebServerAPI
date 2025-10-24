@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using EVChargingBookingAPI.Models;
 using EVChargingBookingAPI.Services;
+using EVChargingBookingAPI.DTOs;
 
 namespace EVChargingBookingAPI.Controllers
 {
@@ -370,6 +371,86 @@ namespace EVChargingBookingAPI.Controllers
                     IsValid = false, 
                     ErrorMessage = ex.Message 
                 });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Update booking status (for operators - bypasses time restrictions)
+        /// </summary>
+        [HttpPatch("{id}/status")]
+        public async Task<ActionResult<Booking>> UpdateBookingStatus(string id, [FromBody] UpdateStatusRequest request)
+        {
+            try
+            {
+                var booking = await _bookingService.GetBookingByIdAsync(id);
+                if (booking == null)
+                {
+                    return NotFound($"Booking with ID {id} not found");
+                }
+
+                // Update status without time restrictions (for operator use)
+                booking.Status = request.Status;
+                booking.UpdatedAt = DateTime.UtcNow;
+
+                // Direct repository update to bypass business rules
+                await _bookingService.UpdateBookingStatusDirectAsync(id, booking);
+                return Ok(booking);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Approve booking (for operators)
+        /// </summary>
+        [HttpPut("{id}/approve")]
+        public async Task<ActionResult<Booking>> ApproveBooking(string id)
+        {
+            try
+            {
+                var booking = await _bookingService.GetBookingByIdAsync(id);
+                if (booking == null)
+                {
+                    return NotFound($"Booking with ID {id} not found");
+                }
+
+                booking.Status = "Approved";
+                booking.UpdatedAt = DateTime.UtcNow;
+
+                await _bookingService.UpdateBookingStatusDirectAsync(id, booking);
+                return Ok(booking);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Start charging (for operators)
+        /// </summary>
+        [HttpPut("{id}/start")]
+        public async Task<ActionResult<Booking>> StartCharging(string id)
+        {
+            try
+            {
+                var booking = await _bookingService.GetBookingByIdAsync(id);
+                if (booking == null)
+                {
+                    return NotFound($"Booking with ID {id} not found");
+                }
+
+                booking.Status = "Started";
+                booking.UpdatedAt = DateTime.UtcNow;
+
+                await _bookingService.UpdateBookingStatusDirectAsync(id, booking);
+                return Ok(booking);
             }
             catch (Exception ex)
             {

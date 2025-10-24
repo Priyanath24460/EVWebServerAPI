@@ -21,5 +21,6 @@ namespace EVChargingBookingAPI.Services
         Task<List<Booking>> GetBookingsByStationIdAsync(string stationId);
         Task<List<Booking>> GetActiveBookingsByStationIdAsync(string stationId);
         Task<List<Booking>> GetBookingsByOperatorUsernameAsync(string operatorUsername);
+        Task<Booking> UpdateBookingStatusDirectAsync(string id, Booking booking);
     }
 }
