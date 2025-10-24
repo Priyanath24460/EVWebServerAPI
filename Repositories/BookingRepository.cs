@@ -33,7 +33,7 @@ namespace EVChargingBookingAPI.Repositories
 
         public async Task<List<Booking>> GetUpcomingByEVOwnerNICAsync(string nic)
         {
-            var activeStatuses = new[] { "Pending", "Approved" };
+            var activeStatuses = new[] { "Pending", "Approved", "Started" };
             var currentDateTime = DateTime.UtcNow;
             
             // Include bookings that haven't ended yet (end time is in the future)
@@ -84,7 +84,7 @@ namespace EVChargingBookingAPI.Repositories
 
         public async Task<bool> HasActiveBookingsForStationAsync(string stationId)
         {
-            var activeStatuses = new[] { "Pending", "Approved" };
+            var activeStatuses = new[] { "Pending", "Approved", "Started" };
             return await _context.Bookings
                 .Find(b => b.ChargingStationId == stationId && activeStatuses.Contains(b.Status))
                 .AnyAsync();
@@ -100,9 +100,10 @@ namespace EVChargingBookingAPI.Repositories
 
         public async Task<List<Booking>> GetActiveBookingsByStationIdAsync(string stationId)
         {
+            var activeStatuses = new[] { "Approved", "Started" };
             return await _context.Bookings
                 .Find(b => b.ChargingStationId == stationId && 
-                          b.Status == "Approved" && 
+                          activeStatuses.Contains(b.Status) && 
                           b.StartTime >= DateTime.UtcNow)
                 .SortBy(b => b.StartTime)
                 .ToListAsync();
