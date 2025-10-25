@@ -58,6 +58,14 @@ namespace EVChargingBookingAPI.Services
                 // Generate 24 hourly slots for this charging point
                 for (int hour = 0; hour < HOURS_PER_DAY; hour++)
                 {
+                    // Skip past time slots if booking date is today
+                    var currentHour = DateTime.Now.Hour;
+                    var isToday = bookingDate.Date == DateTime.Now.Date;
+                    if (isToday && hour <= currentHour)
+                    {
+                        continue; // Skip past and current hour slots for today
+                    }
+
                     var existingBooking = existingBookings.FirstOrDefault(b => 
                         b.ChargingPointNumber == pointNumber && b.TimeSlot == hour);
 
@@ -107,6 +115,14 @@ namespace EVChargingBookingAPI.Services
                 // Generate 24 hourly slots for this charging point
                 for (int hour = 0; hour < HOURS_PER_DAY; hour++)
                 {
+                    // Skip past time slots if booking date is today
+                    var currentHour = DateTime.Now.Hour;
+                    var isToday = bookingDate.Date == DateTime.Now.Date;
+                    if (isToday && hour <= currentHour)
+                    {
+                        continue; // Skip past and current hour slots for today
+                    }
+
                     var existingBooking = existingBookings.FirstOrDefault(b => 
                         b.ChargingPointNumber == pointNumber && b.TimeSlot == hour);
 
@@ -155,6 +171,12 @@ namespace EVChargingBookingAPI.Services
             if (timeSlot < 0 || timeSlot >= HOURS_PER_DAY)
                 return false;
 
+            // Check if the time slot is in the past for today's date
+            var currentHour = DateTime.Now.Hour;
+            var isToday = date.Date == DateTime.Now.Date;
+            if (isToday && timeSlot <= currentHour)
+                return false; // Past time slots are not available
+
             return await _bookingRepository.IsTimeSlotAvailableAsync(stationId, chargingPointNumber, date, timeSlot);
         }
 
@@ -168,6 +190,14 @@ namespace EVChargingBookingAPI.Services
                 throw new ArgumentException("Invalid time slot. Must be between 0 and 23.");
 
             var bookingDate = bookingDto.BookingDate.Date;
+
+            // Prevent booking past time slots for today
+            var currentHour = DateTime.Now.Hour;
+            var isToday = bookingDate.Date == DateTime.Now.Date;
+            if (isToday && bookingDto.TimeSlot <= currentHour)
+            {
+                throw new InvalidOperationException("Cannot book past or current time slots. Please select a future time slot.");
+            }
 
             // Check if the time slot is available
             var isAvailable = await IsTimeSlotAvailableAsync(
