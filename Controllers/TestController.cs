@@ -53,5 +53,28 @@ namespace EVChargingBookingAPI.Controllers
                 environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"
             });
         }
+
+        /// <summary>
+        /// Check server time and timezone information
+        /// </summary>
+        [HttpGet("time")]
+        public ActionResult<object> GetServerTime()
+        {
+            var now = DateTime.Now;
+            var utcNow = DateTime.UtcNow;
+            var timeZone = TimeZoneInfo.Local;
+
+            return Ok(new
+            {
+                serverLocalTime = now,
+                serverUtcTime = utcNow,
+                timeZoneName = timeZone.DisplayName,
+                timeZoneId = timeZone.Id,
+                offsetFromUtc = timeZone.GetUtcOffset(now),
+                currentHour = now.Hour,
+                utcHour = utcNow.Hour,
+                isDaylightSavingTime = timeZone.IsDaylightSavingTime(now)
+            });
+        }
     }
 }

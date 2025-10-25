@@ -23,10 +23,27 @@ namespace EVChargingBookingAPI.Services
         private const int CHARGING_POINTS_PER_STATION = 3;
         private const int HOURS_PER_DAY = 24;
 
+        // Define the local timezone (adjust this to your timezone)
+        // For Sri Lanka/India: UTC+5:30
+        private static readonly TimeZoneInfo LocalTimeZone = TimeZoneInfo.CreateCustomTimeZone(
+            "LocalTZ", 
+            TimeSpan.FromHours(5.5), // UTC+5:30 for Sri Lanka/India
+            "Local Time", 
+            "Local Standard Time"
+        );
+
         public TimeSlotService(IBookingRepository bookingRepository, IChargingStationRepository stationRepository)
         {
             _bookingRepository = bookingRepository;
             _stationRepository = stationRepository;
+        }
+
+        /// <summary>
+        /// Get current local time based on the configured timezone
+        /// </summary>
+        private DateTime GetLocalTime()
+        {
+            return TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, LocalTimeZone);
         }
 
         public async Task<StationAvailabilityDTO> GetStationAvailabilityAsync(string stationId, DateTime date)
@@ -59,8 +76,10 @@ namespace EVChargingBookingAPI.Services
                 for (int hour = 0; hour < HOURS_PER_DAY; hour++)
                 {
                     // Skip past time slots if booking date is today
-                    var currentHour = DateTime.Now.Hour;
-                    var isToday = bookingDate.Date == DateTime.Now.Date;
+                    // Use local time to match user's timezone
+                    var localTime = GetLocalTime();
+                    var currentHour = localTime.Hour;
+                    var isToday = bookingDate.Date == localTime.Date;
                     if (isToday && hour <= currentHour)
                     {
                         continue; // Skip past and current hour slots for today
@@ -116,8 +135,10 @@ namespace EVChargingBookingAPI.Services
                 for (int hour = 0; hour < HOURS_PER_DAY; hour++)
                 {
                     // Skip past time slots if booking date is today
-                    var currentHour = DateTime.Now.Hour;
-                    var isToday = bookingDate.Date == DateTime.Now.Date;
+                    // Use local time to match user's timezone
+                    var localTime = GetLocalTime();
+                    var currentHour = localTime.Hour;
+                    var isToday = bookingDate.Date == localTime.Date;
                     if (isToday && hour <= currentHour)
                     {
                         continue; // Skip past and current hour slots for today
@@ -172,8 +193,10 @@ namespace EVChargingBookingAPI.Services
                 return false;
 
             // Check if the time slot is in the past for today's date
-            var currentHour = DateTime.Now.Hour;
-            var isToday = date.Date == DateTime.Now.Date;
+            // Use local time to match user's timezone
+            var localTime = GetLocalTime();
+            var currentHour = localTime.Hour;
+            var isToday = date.Date == localTime.Date;
             if (isToday && timeSlot <= currentHour)
                 return false; // Past time slots are not available
 
@@ -192,8 +215,10 @@ namespace EVChargingBookingAPI.Services
             var bookingDate = bookingDto.BookingDate.Date;
 
             // Prevent booking past time slots for today
-            var currentHour = DateTime.Now.Hour;
-            var isToday = bookingDate.Date == DateTime.Now.Date;
+            // Use local time to match user's timezone
+            var localTime = GetLocalTime();
+            var currentHour = localTime.Hour;
+            var isToday = bookingDate.Date == localTime.Date;
             if (isToday && bookingDto.TimeSlot <= currentHour)
             {
                 throw new InvalidOperationException("Cannot book past or current time slots. Please select a future time slot.");
